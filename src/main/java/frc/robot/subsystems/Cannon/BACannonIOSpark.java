@@ -1,5 +1,5 @@
 package frc.robot.subsystems.Cannon;
 
-public class BACannonSpark {
+public class BACannonIOSpark {
 
 }
