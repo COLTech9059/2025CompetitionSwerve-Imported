@@ -82,6 +82,12 @@ public final class Constants {
     disableHAL = true;
   }
 
+  //Device ID Constants
+  public static final int row1ID = 14;
+  public static final int row2ID = 15;
+  public static final int row3ID = 16;
+  public static final int baseMotorID = 17;
+
   /***************************************************************************/
   /* The remainder of this file contains physical and/or software constants for the various subsystems of the robot */
 
