@@ -43,18 +43,18 @@ public class BACannonIOSpark extends BACannonIO
     }
 
     @Override
-    public void stopRotation()
-    {   
-        // Stop the baseMotor's rotation
-    }
-
-    @Override
     public void rotateDistance(/*Create parameters for speed, encoder position, and tolerance*/)
     {
         /*
          * Apply the speed parameter to the baseMotor until the encoders read within the tolerances
          * to read encoders, use baseEncoder.getPosition()
          */
+    }
+
+    @Override
+    public void stopRotation()
+    {   
+        // Stop the baseMotor's rotation
     }
 }
 

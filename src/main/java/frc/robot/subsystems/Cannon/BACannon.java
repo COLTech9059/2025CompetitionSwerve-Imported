@@ -29,13 +29,13 @@ public class BACannon extends RBSISubsystem
         io.rotate(speed);
     }
 
-    public void stopRotation()
-    {
-        io.stopRotation();
-    }
-
     public void rotateDistance(double speed, double dist, double tolerance)
     {
         io.rotateDistance(speed, dist, tolerance);
+    }
+
+    public void stopRotation()
+    {
+        io.stopRotation();
     }
 }
