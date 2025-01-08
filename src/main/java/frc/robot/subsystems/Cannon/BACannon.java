@@ -9,9 +9,10 @@ public class BACannon extends RBSISubsystem
 {
     private BACannonIO io;
 
-    public void runSpeed(int[] motors, double speed)
+    public boolean runSpeed(int[] motors, double speed)
     {
         io.setSpeed(motors, speed);
+        return true;
     }
 
     public void runVoltage(int[] motors, double volts)
