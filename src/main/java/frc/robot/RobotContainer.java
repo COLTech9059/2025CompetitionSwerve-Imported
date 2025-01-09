@@ -45,8 +45,10 @@ import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
 import frc.robot.Constants.AprilTagConstants;
 import frc.robot.Constants.AprilTagConstants.AprilTagLayoutType;
 import frc.robot.Constants.PowerConstants;
+import frc.robot.commands.CannonCommands;
 import frc.robot.commands.ChoreoAutoController;
 import frc.robot.commands.DriveCommands;
+import frc.robot.subsystems.Cannon.BACannon;
 import frc.robot.subsystems.accelerometer.Accelerometer;
 import frc.robot.subsystems.drive.Drive;
 import frc.robot.subsystems.flywheel_example.Flywheel;
@@ -84,6 +86,7 @@ public class RobotContainer {
   private final Accelerometer m_accel;
   private final Vision m_vision;
   private final PowerMonitoring m_power;
+  private final BACannon cannon;
 
   // Dashboard inputs
   // AutoChoosers for both supported path planning types
@@ -136,6 +139,7 @@ public class RobotContainer {
               default -> null;
             };
         m_accel = new Accelerometer(m_drivebase.getGyro());
+        cannon = new BACannon();
         break;
 
       case SIM:
@@ -157,6 +161,7 @@ public class RobotContainer {
         m_vision =
             new Vision(m_drivebase::addVisionMeasurement, new VisionIO() {}, new VisionIO() {});
         m_accel = new Accelerometer(m_drivebase.getGyro());
+        cannon = new BACannon();
         break;
     }
 
@@ -302,6 +307,13 @@ public class RobotContainer {
                 () -> m_flywheel.runVelocity(flywheelSpeedInput.get()),
                 m_flywheel::stop,
                 m_flywheel));
+
+    // Press RIGHT BUMPER --> rotate cannon
+    driverXbox.rightBumper().onTrue(CannonCommands.moveCannon(cannon, 0.35, 25, 1));
+    driverXbox.rightTrigger().onTrue(CannonCommands.shootCommand(cannon, 0.5, 0.85));
+
+    // Press RIGHT TRIGGER --> shoot the cannon
+    // Use the above framework to run the shootCommand() when the right bumper is pressed using the onTrue() condition
   }
 
   /**

@@ -1,8 +1,5 @@
 package frc.robot.subsystems.Cannon;
 
-import com.revrobotics.spark.SparkMax;
-
-import edu.wpi.first.math.util.Units;
 import frc.robot.util.RBSISubsystem;
 
 public class BACannon extends RBSISubsystem

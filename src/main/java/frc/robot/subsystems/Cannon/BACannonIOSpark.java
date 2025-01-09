@@ -9,10 +9,11 @@ import edu.wpi.first.wpilibj.Encoder;
 
 public class BACannonIOSpark extends BACannonIO 
 {
-
+    // The baseMotor drives the rotation of the cannon
     private SparkMax baseMotor = new SparkMax(Constants.baseMotorID, MotorType.kBrushless);
     private RelativeEncoder baseEncoder = baseMotor.getEncoder();
 
+    // Each row motor represents a row of compression wheels, with row1 being closest to the mouth of the cannon
     private SparkMax row1 = new SparkMax(Constants.row1ID, MotorType.kBrushless);
     private SparkMax row2 = new SparkMax(Constants.row2ID, MotorType.kBrushless);
     private SparkMax row3 = new SparkMax(Constants.row3ID, MotorType.kBrushless);
@@ -46,7 +47,7 @@ public class BACannonIOSpark extends BACannonIO
     public void rotateDistance(/*Create parameters for speed, encoder position, and tolerance*/)
     {
         /*
-         * Apply the speed parameter to the baseMotor until the encoders read within the tolerances
+         * Apply the speed parameter to the baseMotor until the encoders read within the tolerances (dist +- tolerance is the range)
          * to read encoders, use baseEncoder.getPosition()
          */
     }

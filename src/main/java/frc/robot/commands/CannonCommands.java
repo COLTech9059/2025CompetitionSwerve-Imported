@@ -1,14 +1,15 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import frc.robot.subsystems.Cannon.BACannon;
 
 public class CannonCommands 
 {
 
-    public static void shootCommand(BACannon cannon, double delay, double speed) {
-        Commands.run(
+    public static Command shootCommand(BACannon cannon, double delay, double speed) {
+        return Commands.run(
             () -> {
                 Timer time = new Timer();
                 cannon.runSpeed(new int[] {1, 2}, speed);
@@ -18,10 +19,10 @@ public class CannonCommands
             cannon);
     }
 
-    public static void moveCannon(BACannon cannon, double speed, double dist) {
-        Commands.run(
+    public static Command moveCannon(BACannon cannon, double speed, double dist, double tolerance) {
+        return Commands.run(
             () -> {
-                // Write a command body to rotate the cannon to the setpoint using the speed and dist parameters
+                // Write a command body to rotate the cannon to the setpoint using the speed, tolerance, and dist parameters
             },
         cannon);
     }
