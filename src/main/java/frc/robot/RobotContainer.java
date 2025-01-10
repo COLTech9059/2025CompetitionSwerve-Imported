@@ -48,8 +48,8 @@ import frc.robot.Constants.PowerConstants;
 import frc.robot.commands.CannonCommands;
 import frc.robot.commands.ChoreoAutoController;
 import frc.robot.commands.DriveCommands;
-import frc.robot.subsystems.Cannon.BACannon;
 import frc.robot.subsystems.accelerometer.Accelerometer;
+import frc.robot.subsystems.cannon.BACannon;
 import frc.robot.subsystems.drive.Drive;
 import frc.robot.subsystems.flywheel_example.Flywheel;
 import frc.robot.subsystems.flywheel_example.FlywheelIO;
@@ -310,10 +310,13 @@ public class RobotContainer {
 
     // Press RIGHT BUMPER --> rotate cannon
     driverXbox.rightBumper().onTrue(CannonCommands.moveCannon(cannon, 0.35, 25, 1));
-    driverXbox.rightTrigger().onTrue(CannonCommands.shootCommand(cannon, 0.5, 0.85));
+
+    // Press RIGHT TRIGGER --> shoot cannon
+    driverXbox.rightTrigger().onTrue(Commands.runOnce(() -> CannonCommands.shootCommand(cannon, 0.5, 0.85), cannon));
 
     // Press RIGHT TRIGGER --> shoot the cannon
     // Use the above framework to run the shootCommand() when the right bumper is pressed using the onTrue() condition
+    
   }
 
   /**
