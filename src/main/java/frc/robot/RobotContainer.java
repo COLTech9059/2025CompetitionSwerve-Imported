@@ -48,12 +48,14 @@ import frc.robot.Constants.PowerConstants;
 import frc.robot.commands.CannonCommands;
 import frc.robot.commands.ChoreoAutoController;
 import frc.robot.commands.DriveCommands;
+import frc.robot.commands.IntakeCommands;
 import frc.robot.subsystems.accelerometer.Accelerometer;
 import frc.robot.subsystems.cannon.BACannon;
 import frc.robot.subsystems.drive.Drive;
 import frc.robot.subsystems.flywheel_example.Flywheel;
 import frc.robot.subsystems.flywheel_example.FlywheelIO;
 import frc.robot.subsystems.flywheel_example.FlywheelIOSim;
+import frc.robot.subsystems.intake.Intake;
 import frc.robot.subsystems.vision.Vision;
 import frc.robot.subsystems.vision.VisionIO;
 import frc.robot.subsystems.vision.VisionIOLimelight;
@@ -87,6 +89,7 @@ public class RobotContainer {
   private final Vision m_vision;
   private final PowerMonitoring m_power;
   private final BACannon cannon;
+  private final Intake intake;
 
   // Dashboard inputs
   // AutoChoosers for both supported path planning types
@@ -140,6 +143,7 @@ public class RobotContainer {
             };
         m_accel = new Accelerometer(m_drivebase.getGyro());
         cannon = new BACannon();
+        intake = new Intake(Constants.intakeID, Constants.intakePFwd, Constants.intakePRev, Constants.intakeP2Fwd, Constants.intakeP2Rev);
         break;
 
       case SIM:
@@ -162,6 +166,7 @@ public class RobotContainer {
             new Vision(m_drivebase::addVisionMeasurement, new VisionIO() {}, new VisionIO() {});
         m_accel = new Accelerometer(m_drivebase.getGyro());
         cannon = new BACannon();
+        intake = new Intake(Constants.intakeID, Constants.intakePFwd, Constants.intakePRev, Constants.intakeP2Fwd, Constants.intakeP2Rev);
         break;
     }
 
@@ -313,6 +318,10 @@ public class RobotContainer {
 
     // Press RIGHT TRIGGER --> shoot cannon
     driverXbox.rightTrigger().onTrue(Commands.runOnce(() -> CannonCommands.shootCommand(cannon, 0.5, 0.85), cannon));
+
+    // Hold LEFT BUMPER --> active intake
+    operatorXbox.leftBumper().whileTrue(Commands.run(() -> IntakeCommands.activeIntake(intake, 0.5), intake));
+    operatorXbox.leftBumper().onFalse(Commands.runOnce(() -> intake.stop(), intake));
 
     // Press RIGHT TRIGGER --> shoot the cannon
     // Use the above framework to run the shootCommand() when the right bumper is pressed using the onTrue() condition

@@ -22,4 +22,8 @@ public class Intake extends RBSISubsystem{
     public void timedIntake(double speed, double runtime) {
         io.timedIntake(speed, runtime);
     }
+
+    public void stop() {
+        io.stop();
+    }
 }

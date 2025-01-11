@@ -28,4 +28,6 @@ public class IntakeIO {
     public void runIntake(double speed) {}
 
     public void timedIntake(double speed, double runtime) {}
+
+    public void stop() {}
 }

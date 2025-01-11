@@ -88,6 +88,17 @@ public final class Constants {
   public static final int row3ID = 16;
   public static final int baseMotorID = 17;
 
+  public static final int intakeID = 18;
+  public static final int intakePFwd = 0;
+  public static final int intakePRev = 1;
+  public static final int intakeP2Fwd = 2;
+  public static final int intakeP2Rev = 3;
+  public static final int algaeID = 19;
+  public static final int algaePFwd = 4;
+  public static final int algaePRev = 5;
+  public static final int algaeP2Fwd = 6;
+  public static final int algaeP2Rev = 7;
+
   /***************************************************************************/
   /* The remainder of this file contains physical and/or software constants for the various subsystems of the robot */
 

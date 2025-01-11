@@ -38,4 +38,9 @@ public class IntakeIOSpark extends IntakeIO {
 
         if (time.get() >= runtime) intake.stopMotor();
     }
+
+    @Override
+    public void stop() {
+        intake.stopMotor();
+    }
 }

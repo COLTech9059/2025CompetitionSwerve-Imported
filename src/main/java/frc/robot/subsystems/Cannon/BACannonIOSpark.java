@@ -23,55 +23,39 @@ public class BACannonIOSpark extends BACannonIO
     public void setVoltage(int[] ids, double volts)
     {
         // Use a for loop and the setVoltage() method to assign the voltage setpoint to each of the indicated motors (you will also need the motors array defined above)
-        for (int i = 0; i < ids.length; i++) {
-            motors[ids[i] - 1].setVoltage(volts);
-        }
     }
 
     @Override
     public void setSpeed(int[] ids, double speed)
     {
         //Use a for loop and the set() method to assign the speed setpoint to each of the indicated motors
-        for (int i = 0; i < ids.length; i++) {
-            motors[ids[i] - 1].set(speed);
-        }
     }
 
     @Override
     public void stop(int[] ids)
     {
         // Use a for loop and the stop() method to stop each of the indicated motors
-        for (int i = 0; i < ids.length; i++) {
-            motors[ids[i] - 1].stopMotor();
-        }
     }
 
     @Override 
-    public void rotate(double speed)
+    public void rotate(parameters go here)
     {
         // Apply the speed parameter to the baseMotor
-        baseMotor.set(speed);
     }
 
     @Override 
-    public void rotateDistance(double speed, double dist, double tolerance)
+    public void rotateDistance(parameters go here)
     {
         /*
          * Apply the speed parameter to the baseMotor until the encoders read within the tolerances (dist +- tolerance is the range)
          * to read encoders, use baseEncoder.getPosition()
          */
-        baseMotor.set(speed);
-
-        if (baseEncoder.getPosition() <= dist + tolerance && baseEncoder.getPosition() >= dist - tolerance) {
-            baseMotor.stopMotor();
-        }
     }
 
     @Override
     public void stopRotation()
     {   
         // Stop the baseMotor's rotation
-        baseMotor.stopMotor();
     }
 }
 
