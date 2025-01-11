@@ -90,6 +90,7 @@ public class RobotContainer {
   private final PowerMonitoring m_power;
   private final BACannon cannon;
   private final Intake intake;
+  private final Intake algae; /*Use this object to create the controls for the algae subsystem*/
 
   // Dashboard inputs
   // AutoChoosers for both supported path planning types
