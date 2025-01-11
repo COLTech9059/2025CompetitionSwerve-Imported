@@ -4,7 +4,7 @@ import frc.robot.util.RBSISubsystem;
 
 public class BACannon extends RBSISubsystem
 {
-    private BACannonIO io;
+    private BACannonIO io = new BACannonIO();
 
     public boolean runSpeed(int[] motors, double speed)
     {
